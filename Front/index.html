@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Smart Decision</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="floating-panel">
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+      <button onclick="mapSeguros()">Mapa para Seguros</button>
+      <button onclick="mapCreditos()">Mapa para Créditos</button>
+    </div>
+
+<div id="map" style="width: 100%;height:100%;"></div>
+
+<script src="js/main.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADQ3rwXPtfCP6nX7eL3ohuq-iZ2_13qho&callback=initMap&libraries=visualization"></script>	
+
+</body>
+</html>
