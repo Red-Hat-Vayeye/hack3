@@ -87,16 +87,17 @@ function ajaxrequest(option){
      var data = {"name":"John Doe"}
      if(option == "creditos") urlT = "credit";
      else urlT = "insurance"; 
-        $.ajax({
+        $.ajax({    
           type: "GET",
-          url: 'http://10.50.90.199:8081/'+option,                            
+          url: 'http://167.99.169.199:8081/'+option,                            
           success: function(data) {
                             console.log('success');
+                            console.log(data);
                             var data = JSON.stringify(data);
                             var newArr = JSON.parse(data); 
                             var points = []; 
                             for(i=0; i<newArr.length; i++){
-                                   points.push(new google.maps.LatLng(newArr[i].lat, newArr[i].lon));
+                                   points.push(new google.maps.LatLng(newArr[i].latitude, newArr[i].longitude));
                               }
                               if(option=="creditos"){
                                    heatmapCreditos = new google.maps.visualization.HeatmapLayer({
