@@ -9,14 +9,14 @@ app.use(function(req, res, next) {
 });
 
 app.get('/creditos', function (req, res) {
-	con.query("SELECT * FROM maps WHERE tipo = 'credito' ", function (err, result, fields) {
+	con.query("SELECT * FROM map WHERE type = 'credito' ", function (err, result, fields) {
     		if (err) throw err;
     res.send(result);
   });
 })
 
 app.get('/seguros', function (req, res) {
-	con.query("SELECT * FROM maps where tipo = 'seguro' ", function (err, result, fields) {
+	con.query("SELECT * FROM map where type = 'seguro' ", function (err, result, fields) {
     		if (err) throw err;
     res.send(result);
   });
@@ -32,8 +32,8 @@ var server = app.listen(8081, function () {
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
-  database: "HACK3"
+  password: "steel267{sir",
+  database: "hack_user_data"
 });
 
 con.connect(function(err) {

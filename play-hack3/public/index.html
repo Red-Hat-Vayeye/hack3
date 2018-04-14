@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Decision</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+<img style="display:inline;" src="images/usuario.jpg" height="35" width="35">
+<span id="username">Daniel Vallejo</span>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+  <input type="checkbox" id="id-name--1" name="set-name" class="switch-input" onclick="mapCreditos()">
+	<label for="id-name--1" class="switch-label">Créditos: <span class="toggle--on">Ocultar</span><span class="toggle--off">Mostrar</span></label>
+
+<input type="checkbox" id="id-name--2" name="set-name" class="switch-input" onclick="mapSeguros()">
+	<label for="id-name--2" class="switch-label">Seguros: <span class="toggle--on">Ocultar</span><span class="toggle--off">Mostrar</span></label>
+
+  <a href="javascript:void(0)" onclick="changeRadius()">Cambiar radio</a>
+  <a href="javascript:void(0)" onclick="changeOpacity()">Cambiar opacidad</a>
+</div>
+
+<div id="myNavBar">
+<span id="menuIcon" onclick="openNav()">&#9776;</span>
+<span id="titleApp">Tweet Needs Analyzer</span>
+</div>
+
+<div id="map" style="width: 100%;height:100%;"></div>
+<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script src="javascripts/main.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADQ3rwXPtfCP6nX7eL3ohuq-iZ2_13qho&callback=initMap&libraries=visualization"></script>	
+
+</body>
+</html>
