@@ -4,11 +4,14 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
-GET		/twitter		    		controllers.TwitterStreamController.index
-GET		/twitter/keywords			controllers.TwitterKeyWordController.index
-GET		/twitter/geolocation		controllers.TwitterGeolocationController.index
-GET 	/keywords					controllers.WordClassifierController.index
-GET 	/geolocation				controllers.GeolocationController.index
+GET		/test/twitter		    	controllers.TwitterStreamController.index
+GET		/test/twitter/keywords		controllers.TwitterStreamController.keywords
+GET		/test/twitter/geolocation	controllers.TwitterStreamController.geolocation
+GET 	/test/keywords				controllers.WordClassifierController.index
+GET 	/test/geolocation			controllers.GeolocationController.index
+
+GET 	/heatmap/insurance			controllers.HeatMapController.insurance
+GET 	/heatmap/credit				controllers.HeatMapController.credit
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
