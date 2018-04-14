@@ -40,10 +40,15 @@ public class TwitterStreamController extends Controller {
 		List<Long> followings = new ArrayList<>();
 		followings.add(1234L);
 		followings.add(566788L);
+
+		BufferedReader twKeyReader=new BufferedReader(new FileReader("TwitterSearchKeywords.txt"));
+		String term = "";
 		List<String> terms = new ArrayList<>();
-		terms.add("dinero");
-		terms.add("prestamo");
-		terms.add("nuevo");
+		while((term = twKeyReader) != null){
+			terms.add(term);
+		}
+		twKeyReader.close();
+
 		List<String> languages = new ArrayList<>();
 		languages.add("es-419");
 		//hosebirdEndpoint.followings(followings);
