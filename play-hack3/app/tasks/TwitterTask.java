@@ -6,6 +6,10 @@ import javax.inject.*;
 
 import services.*;
 
+import sql.*;
+
+import model.*;
+
 import akka.actor.*;
 
 import scala.concurrent.*;
@@ -39,7 +43,7 @@ public class TwitterTask implements Runnable {
 	private void initialize() {
 		this.actorSys.scheduler().schedule(
 			Duration.create(10, TimeUnit.SECONDS), // initialDelay
-            Duration.create(10, TimeUnit.MINUTES), // interval
+            Duration.create(10, TimeUnit.SECONDS), // interval
             this,
             this.executor // using the custom executor
         );
@@ -47,18 +51,26 @@ public class TwitterTask implements Runnable {
 	
 	@Override
 	public void run() {
-		final TwitterStream filtered = stream.filteredTwits(2);
+		final TwitterStream filtered = stream.filteredTwits(1);
 
 		final List<String> texts = filtered.extractText();
 
 		String keywords = "";
 		try {
-			keywords = TextCommon.prettify( WordClassifier.evalTweets( (ArrayList<String>) texts, 10));
+			keywords = TextCommon.prettify( WordClassifier.evalTweets( (ArrayList<String>) texts, 1));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
     	final List<String> geolocations = 
 				geolocationApi.geolocation( filtered.extractLocation() );
+
+		/*
+		for(int i = 0; i < text.length; i++) {
+			Map map = new Map();
+			MapRepository.insert(map)	
+		}
+		*/
+		
 
 		System.out.print("\nTweets:\n\t");
 		System.out.println(texts.get(0) +  "\n\t"+ texts.get(1) );

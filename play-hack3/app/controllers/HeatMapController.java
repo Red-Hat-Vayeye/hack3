@@ -16,11 +16,36 @@ import com.google.gson.*;
 public class HeatMapController extends Controller {
 
 	public Result insurance() {
-		return ok( Map.findByType(Map.Type.prestamo) );
+		List<Map> maps = Map.findByType(Map.Type.prestamo);
+
+		String msg = "";
+		ObjectMapper mapper = new ObjectMapper();
+        try {
+        	for(Map map : maps) {
+            	String json = mapper.writeValueAsString(artist);
+            	msg += json + "\n";
+        	}
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+		return ok(msg);
 	}
 
 	public Result credit() {
-		return ok( Map.findByType(Map.Type.credito) );
+		
+		List<Map> maps = Map.findByType(Map.Type.credito);
+
+		String msg = "";
+		ObjectMapper mapper = new ObjectMapper();
+        try {
+        	for(Map map : maps) {
+            	String json = mapper.writeValueAsString(artist);
+            	msg += json + "\n";
+        	}
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+		return ok(msg);
 	}
 
 }

@@ -48,7 +48,11 @@ public class GoogleMapsGeolocation {
 					String result = gson.toJson(results); 
 					JsonNode json = Json.parse(result);
 					JsonNode coor = json.findValue("location");
-					coordinates.add(coor.textValue());
+					if (result == null || coor == null() ) {
+						coordinates.add(result);
+					} else {
+						coordinates.add(coor.textValue());
+					}
 				}
 			} catch(Exception e) {
 				e.printStackTrace();
