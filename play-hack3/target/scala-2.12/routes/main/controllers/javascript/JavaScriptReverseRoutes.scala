@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Mauricio/Documents/hack3/play-hack3/conf/routes
-// @DATE:Sat Apr 14 00:15:53 CDT 2018
+// @DATE:Sat Apr 14 00:47:53 CDT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -11,7 +11,7 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers.javascript {
 
-  // @LINE:10
+  // @LINE:11
   class ReverseGeolocationController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -19,7 +19,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
+    // @LINE:11
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.GeolocationController.index",
       """
@@ -31,7 +31,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:13
+  // @LINE:14
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -39,7 +39,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:13
+    // @LINE:14
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
@@ -71,7 +71,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:9
+  // @LINE:10
   class ReverseWordClassifierController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -79,12 +79,12 @@ package controllers.javascript {
     }
 
   
-    // @LINE:9
+    // @LINE:10
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.WordClassifierController.index",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "words"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "keywords"})
         }
       """
     )
@@ -124,7 +124,27 @@ package controllers.javascript {
       "controllers.TwitterKeyWordController.index",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "twitter/keyword"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "twitter/keywords"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:9
+  class ReverseTwitterGeolocationController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:9
+    def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.TwitterGeolocationController.index",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "twitter/geolocation"})
         }
       """
     )

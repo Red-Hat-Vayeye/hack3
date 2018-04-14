@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Mauricio/Documents/hack3/play-hack3/conf/routes
-// @DATE:Sat Apr 14 00:15:53 CDT 2018
+// @DATE:Sat Apr 14 00:47:53 CDT 2018
 
 package controllers;
 
@@ -14,6 +14,7 @@ public class routes {
   public static final controllers.ReverseWordClassifierController WordClassifierController = new controllers.ReverseWordClassifierController(RoutesPrefix.byNamePrefix());
   public static final controllers.ReverseHomeController HomeController = new controllers.ReverseHomeController(RoutesPrefix.byNamePrefix());
   public static final controllers.ReverseTwitterKeyWordController TwitterKeyWordController = new controllers.ReverseTwitterKeyWordController(RoutesPrefix.byNamePrefix());
+  public static final controllers.ReverseTwitterGeolocationController TwitterGeolocationController = new controllers.ReverseTwitterGeolocationController(RoutesPrefix.byNamePrefix());
 
   public static class javascript {
     
@@ -23,6 +24,7 @@ public class routes {
     public static final controllers.javascript.ReverseWordClassifierController WordClassifierController = new controllers.javascript.ReverseWordClassifierController(RoutesPrefix.byNamePrefix());
     public static final controllers.javascript.ReverseHomeController HomeController = new controllers.javascript.ReverseHomeController(RoutesPrefix.byNamePrefix());
     public static final controllers.javascript.ReverseTwitterKeyWordController TwitterKeyWordController = new controllers.javascript.ReverseTwitterKeyWordController(RoutesPrefix.byNamePrefix());
+    public static final controllers.javascript.ReverseTwitterGeolocationController TwitterGeolocationController = new controllers.javascript.ReverseTwitterGeolocationController(RoutesPrefix.byNamePrefix());
   }
 
 }

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Mauricio/Documents/hack3/play-hack3/conf/routes
-// @DATE:Sat Apr 14 00:15:53 CDT 2018
+// @DATE:Sat Apr 14 00:47:53 CDT 2018
 
 import play.api.mvc.Call
 
@@ -11,14 +11,14 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers {
 
-  // @LINE:10
+  // @LINE:11
   class ReverseGeolocationController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:10
+    // @LINE:11
     def index(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "geolocation")
@@ -26,14 +26,14 @@ package controllers {
   
   }
 
-  // @LINE:13
+  // @LINE:14
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:13
+    // @LINE:14
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
@@ -56,17 +56,17 @@ package controllers {
   
   }
 
-  // @LINE:9
+  // @LINE:10
   class ReverseWordClassifierController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:9
+    // @LINE:10
     def index(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "words")
+      Call("GET", _prefix + { _defaultPrefix } + "keywords")
     }
   
   }
@@ -96,7 +96,22 @@ package controllers {
     // @LINE:8
     def index(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "twitter/keyword")
+      Call("GET", _prefix + { _defaultPrefix } + "twitter/keywords")
+    }
+  
+  }
+
+  // @LINE:9
+  class ReverseTwitterGeolocationController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:9
+    def index(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "twitter/geolocation")
     }
   
   }

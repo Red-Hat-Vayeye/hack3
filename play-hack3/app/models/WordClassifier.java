@@ -21,7 +21,7 @@ public class WordClassifier {
         return TextCommon.GetKeyPhrases(documents);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static String test() throws Exception {
         ArrayList<String> demo = new ArrayList<String>();
         demo.add("Me da hambre todos los días.");
         demo.add("Cambiaron de lugar este, no.");
@@ -29,7 +29,10 @@ public class WordClassifier {
         demo.add("Raul es el hijo de Zechinelli.");
         demo.add("Oye por que no le pides ayuda a un ingeniero en sistemas.");
         demo.add("Tres tristres tigres tragaban trigo en un trigal.");
-        String demoRep = evalTweets(demo,100);
-        System.out.println(TextCommon.prettify(demoRep));
+        return TextCommon.prettify(evalTweets(demo, 100));
+    }
+
+    public static void main(String[] args) throws Exception {
+        System.out.println(test());
     }
 }

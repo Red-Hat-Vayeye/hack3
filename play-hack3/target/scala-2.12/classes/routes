@@ -5,8 +5,9 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 GET		/twitter		    		controllers.TwitterStreamController.index
-GET		/twitter/keyword			controllers.TwitterKeyWordController.index
-GET 	/words						controllers.WordClassifierController.index
+GET		/twitter/keywords			controllers.TwitterKeyWordController.index
+GET		/twitter/geolocation		controllers.TwitterGeolocationController.index
+GET 	/keywords					controllers.WordClassifierController.index
 GET 	/geolocation				controllers.GeolocationController.index
 
 # Map static resources from the /public folder to the /assets URL path

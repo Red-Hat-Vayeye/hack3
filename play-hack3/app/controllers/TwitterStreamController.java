@@ -87,12 +87,6 @@ public class TwitterStreamController extends Controller {
 		}
 		hosebirdClient.stop();
 
-		/*
-		
-			INSERT CODE HERE
-
-		*/
-
 		return ok(msg);
     }
 

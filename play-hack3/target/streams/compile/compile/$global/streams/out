@@ -1,4 +1,3 @@
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Mauricio\Documents\hack3\play-hack3\app\controllers\GeolocationController.java:35:1:  error: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m	        return ok(gson.toJson(results.addressComponents));[0m
-[0m[[0m[31merror[0m] [0m[0m	                                     ^^  symbol:   variable addressComponents[0m
-[0m[[0m[31merror[0m] [0m[0m  location: variable results of type GeocodingResult[][0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\Mauricio\Documents\hack3\play-hack3\app\models\WordClassifier.java:32:1:  error: unreported exception Exception; must be caught or declared to be thrown[0m
+[0m[[0m[31merror[0m] [0m[0m        return evalTweets(demo,100);[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^^[0m

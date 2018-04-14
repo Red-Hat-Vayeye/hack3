@@ -23,14 +23,15 @@ public class WordClassifierController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
+
+        String msg = "Error";
     	try {
-    		String[] args = new String[0];
-    		WordClassifier.main(args);
+    		msg = WordClassifier.test();
     	} catch(Exception e) {
     		e.printStackTrace();
     	} 
 
-		return ok("Hello");
+		return ok(msg);
 	}
 	
 }

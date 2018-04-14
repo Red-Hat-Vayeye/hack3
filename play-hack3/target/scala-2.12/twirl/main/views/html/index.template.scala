@@ -32,9 +32,17 @@ object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
 
 Seq[Any](format.raw/*1.4*/("""
 
-"""),_display_(/*3.2*/main("Welcome to Play")/*3.25*/ {_display_(Seq[Any](format.raw/*3.27*/("""
-  """),format.raw/*4.3*/("""<h1>Welcome to Play!</h1>
-""")))}),format.raw/*5.2*/("""
+"""),_display_(/*3.2*/main("Hack Puebla 2018")/*3.26*/ {_display_(Seq[Any](format.raw/*3.28*/("""
+  """),format.raw/*4.3*/("""<h1>Hack Puebla 2018</h1>
+  <h3>Rutas Disponibles del API</h3>
+  <ul>
+  	<li><a href="/twitter">/twitter</a></li>
+  	<li><a href="/twitter/keywords">/twitter/keywords</a></li>
+  	<li><a href="/twitter/geolocation">/twitter/geolocation</a></li>
+  	<li><a href="/keywords">/keywords</a></li>
+  	<li><a href="/geolocation">/geolocation</a></li>
+  </ul>
+""")))}),format.raw/*13.2*/("""
 """))
       }
     }
@@ -51,11 +59,11 @@ Seq[Any](format.raw/*1.4*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Apr 13 21:32:33 CDT 2018
+                  DATE: Sat Apr 14 00:51:49 CDT 2018
                   SOURCE: C:/Users/Mauricio/Documents/hack3/play-hack3/app/views/index.scala.html
-                  HASH: e7b67f9143e77fd41846670f700f7278d5705eda
-                  MATRIX: 941->1|1037->3|1067->8|1098->31|1137->33|1167->37|1224->65
-                  LINES: 28->1|33->1|35->3|35->3|35->3|36->4|37->5
+                  HASH: 749e33888a364bd146ff3bf1e99d0883fad5309b
+                  MATRIX: 941->1|1037->3|1067->8|1099->32|1138->34|1168->38|1558->398
+                  LINES: 28->1|33->1|35->3|35->3|35->3|36->4|45->13
                   -- GENERATED --
               */
           

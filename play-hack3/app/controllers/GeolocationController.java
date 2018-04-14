@@ -29,7 +29,7 @@ public class GeolocationController extends Controller {
 		try {
 			GeocodingResult[] results =  GeocodingApi.geocode(
 				context,
-	    		"1600 Amphitheatre Parkway Mountain View, CA 94043"
+	    		"Palo Alto, California"
 	    	).await();
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	        return ok(gson.toJson(results));

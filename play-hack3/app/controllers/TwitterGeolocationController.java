@@ -1,7 +1,5 @@
 package controllers;
 
-import models.*;
-
 import play.mvc.*;
 import play.libs.*;
 
@@ -18,11 +16,18 @@ import com.twitter.hbc.*;
 
 import com.fasterxml.jackson.databind.*;
 
+import com.google.maps.*;
+import com.google.maps.model.*;
+
+import com.google.gson.*;
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
  */
-public class TwitterKeyWordController extends Controller {
+public class TwitterGeolocationController extends Controller {
+
+	private String gKey = "AIzaSyBwkU3z6cZlSGW4PNa1L1SlQ6TlcDpClFM";
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -73,30 +78,42 @@ public class TwitterKeyWordController extends Controller {
 		hosebirdClient.connect();
 	 
 		int i = 0;
-		int max = 100;
-		ArrayList<String> msgs = new ArrayList<>();
+		int max = 1;
+
+		GeoApiContext context = new GeoApiContext.Builder()
+    	.apiKey(gKey)
+    	.build();
+
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		GeocodingResult[] results = null;
 		while (!hosebirdClient.isDone() && i < max) {
 	  		try {
 				String txt = msgQueue.take();
 				JsonNode json = Json.parse(txt);
-				msgs.add(json.findPath("text").textValue());
-				i++;
+				JsonNode location = json.findValue("location");
+				if(location != null
+					&& location.textValue() != null
+					&& location.textValue().trim().length() > 0) {
+					results =  GeocodingApi.geocode(
+						context,
+		    			location.textValue()
+		    		).await();
+					i++;
+				}
 			} catch(Exception e) {
 				e.printStackTrace();
+				if(e instanceof NullPointerException) {
+					i++;
+				}
 			}
 		}
 		hosebirdClient.stop();
 
-		String msg = "Error";
-		try {
-			String txt = WordClassifier.evalTweets(msgs, 1000);
-			msg = TextCommon.prettify(txt);
-			JsonNode json = Json.parse(txt);
-		} catch(Exception e) {
-			e.printStackTrace();
+		if(results != null) {
+			return ok(gson.toJson(results));
+		} else {
+			return ok("Error");
 		}
-
-		return ok(msg);
     }
 
 }
