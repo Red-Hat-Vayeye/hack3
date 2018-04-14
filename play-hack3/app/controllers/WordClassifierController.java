@@ -1,6 +1,6 @@
 package controllers;
 
-import models.*;
+import azure.*;
 
 import play.mvc.*;
 import play.libs.*;
