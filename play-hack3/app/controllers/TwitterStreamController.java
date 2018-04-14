@@ -4,6 +4,7 @@ import play.mvc.*;
 import play.libs.*;
 
 import java.lang.*;
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -21,6 +22,8 @@ import com.fasterxml.jackson.databind.*;
  * to the application's home page.
  */
 public class TwitterStreamController extends Controller {
+
+private final static String PATH = "/home/hack/hack3/play-hack3/app/controllers/";
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -41,13 +44,24 @@ public class TwitterStreamController extends Controller {
 		followings.add(1234L);
 		followings.add(566788L);
 
-		BufferedReader twKeyReader=new BufferedReader(new FileReader("TwitterSearchKeywords.txt"));
-		String term = "";
 		List<String> terms = new ArrayList<>();
-		while((term = twKeyReader) != null){
+		try {
+		File file = new File(PATH + "TwitterSearchKeywords.txt");
+		if(!file.exists())
+			System.err.println("File doesnt exist");		
+
+		if (!file.canRead())
+			System.err.println("Cant read file");
+		
+		BufferedReader twKeyReader=new BufferedReader(new FileReader(file));
+		String term = "";
+		while((term = twKeyReader.readLine()) != null){
 			terms.add(term);
 		}
 		twKeyReader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		List<String> languages = new ArrayList<>();
 		languages.add("es-419");

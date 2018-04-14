@@ -13,7 +13,7 @@ import javax.inject.*;
 
 @Singleton
 class JavaApplicationDatabase {
-
+/*
     private Database db;
     private DatabaseExecutionContext executionContext;
 
@@ -24,11 +24,11 @@ class JavaApplicationDatabase {
     }
 
    public CompletionStage<Integer> updateSomething() {
-       return CompletableFuture.supplyA}sync(() -> {
+       return CompletableFuture.supplyAsync(() -> {
            return db.withConnection(connection -> {
                // do whatever you need with the db connection
                return 1;
            });
        }, executionContext);
-   }
+   }*/
 }

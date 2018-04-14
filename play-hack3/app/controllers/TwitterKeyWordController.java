@@ -5,6 +5,7 @@ import azure.*;
 import play.mvc.*;
 import play.libs.*;
 
+import java.io.*;
 import java.lang.*;
 import java.util.*;
 import java.util.concurrent.*;
@@ -43,13 +44,17 @@ public class TwitterKeyWordController extends Controller {
 		followings.add(1234L);
 		followings.add(566788L);
 
+		List<String> terms = new ArrayList<>();
+		try {
 		BufferedReader twKeyReader=new BufferedReader(new FileReader("TwitterSearchKeywords.txt"));
 		String term = "";
-		List<String> terms = new ArrayList<>();
-		while((term = twKeyReader) != null){
+		while((term = twKeyReader.readLine()) != null){
 			terms.add(term);
 		}
 		twKeyReader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		List<String> languages = new ArrayList<>();
 		languages.add("es-419");
