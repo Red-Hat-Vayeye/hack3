@@ -1,6 +1,19 @@
 package services;
 
+import play.mvc.*;
+import play.libs.*;
+
+import java.io.*;
+import java.lang.*;
 import java.util.*;
+import java.util.concurrent.*;
+
+import com.twitter.hbc.core.*;
+import com.twitter.hbc.core.event.*;
+import com.twitter.hbc.core.endpoint.*;
+import com.twitter.hbc.core.processor.*;
+import com.twitter.hbc.httpclient.auth.*;
+import com.twitter.hbc.*;
 
 import com.fasterxml.jackson.databind.*;
 
@@ -29,12 +42,13 @@ public class GoogleMapsGeolocation {
 			try {
 				results = GeocodingApi.geocode(
 					context,
-    				location.textValue()
+    				location
     			).await();
 				if(results.length > 0) {
-					JsonNode json = Json.parse(twit);
-					JsonNode location = json.findValue("location");
-					coordinates.add(location.textValue());
+					String result = gson.toJson(results); 
+					JsonNode json = Json.parse(result);
+					JsonNode coor = json.findValue("location");
+					coordinates.add(coor.textValue());
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

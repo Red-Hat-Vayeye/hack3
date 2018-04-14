@@ -24,10 +24,12 @@ public class TwitterStream {
 
 	private final List<String> terms;
 	private List<String> twits;
+	private BlockingQueue<String> msgQueue;
+	private BlockingQueue<Event> eventQueue;
 
 	public TwitterStream() {
 		terms = new ArrayList<>();
-		initTerms
+		initTerms();
 		twits = new ArrayList<>();
 	}
 
@@ -77,11 +79,11 @@ public class TwitterStream {
     	return locations;
     }
 
-	public List<String> extractLocation(String<String> tweets) {
+	public List<String> extractLocation(List<String> twits) {
     	List<String> locations = new ArrayList<>();
 
-    	for( String tweet : tweets ) {
-			JsonNode json = Json.parse(tweet);
+    	for( String twit : twits ) {
+			JsonNode json = Json.parse(twit);
     		JsonNode location = json.findValue("location");
 			if(location != null
 				&& location.textValue() != null
@@ -93,7 +95,7 @@ public class TwitterStream {
     	return locations;
     }
 
-    public List<String> extractText(String<String> tweets) {
+    public List<String> extractText(List<String> twits) {
     	List<String> texts = new ArrayList<>();
 
     	for( String twit : twits ) {
@@ -139,7 +141,7 @@ public class TwitterStream {
 				add = add && terms.parallelStream().anyMatch(twit::contains);
 
 				if(add) {
-					texts.add(txt);
+					twits.add(twit);
 					i++;
 				}
 			} catch(Exception e) {
@@ -170,7 +172,7 @@ public class TwitterStream {
 				add = add && terms.parallelStream().anyMatch(twit::contains);
 
 				if(add) {
-					filtereTwits.add(txt);
+					filteredTwits.add(twit);
 				}
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -190,8 +192,6 @@ public class TwitterStream {
 		int i = 0;
 		int j = 0;
 
-		final List<String> twits = new ArrayList<>();
-
 		while (!hosebirdClient.isDone() && i < amount && j < MAX) {
 	  		try {
 				String txt = msgQueue.take();
@@ -210,8 +210,8 @@ public class TwitterStream {
     private Client buildClient() {
 
     	/** Set up your blocking queues: Be sure to size these properly based on expected TPS of your stream */
-		BlockingQueue<String> msgQueue = new LinkedBlockingQueue<String>(100000);
-		BlockingQueue<Event> eventQueue = new LinkedBlockingQueue<Event>(1000);
+		msgQueue = new LinkedBlockingQueue<String>(100000);
+		eventQueue = new LinkedBlockingQueue<Event>(1000);
 
 		/** Declare the host you want to connect to, the endpoint, and authentication (basic auth or oauth) */
 		Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);

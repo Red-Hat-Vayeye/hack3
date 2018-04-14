@@ -1,6 +1,6 @@
 package controllers;
 
-import azure.*
+import azure.*;
 
 import services.*;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.*;
 
 import javax.inject.*;
 
-import com.fasterxml.jackson.databind.*;;
+import com.fasterxml.jackson.databind.*;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -31,8 +31,8 @@ public class TwitterStreamController extends Controller {
 		this.geolocationApi = geolocationApi;
 	}
 
-    public Result index() {
-		final List<String> twits = twitterStream.getFilteredTwits(50);
+   	public Result index() {
+		final List<String> twits = twitterStream.filteredTwits(50).get();
 
 		String msg = "";
 
@@ -49,9 +49,13 @@ public class TwitterStreamController extends Controller {
 
     public Result keywords() {
     	final List<String> texts = twitterStream.filteredTwits(10).extractText();
-
-    	String msg = TextCommon.prettify(WordClassifier.evalTweets(texts, 10));
-
+	
+	String msg = "Error";
+	try {
+    		msg = TextCommon.prettify(WordClassifier.evalTweets((ArrayList<String>) texts, 10));
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
 		return ok(msg);
     }
 
