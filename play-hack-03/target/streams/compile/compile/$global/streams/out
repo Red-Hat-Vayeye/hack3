@@ -1,4 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/home/hack/hack-3/play-hack-03/app/controllers/TwitterStreamController.java:51:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   method language(java.util.List<java.lang.String>)[0m
-[0m[[0m[31merror[0m] [0m[0m  location: variable hosebirdEndpoint of type com.twitter.hbc.core.endpoint.StatusesFilterEndpoint[0m
-[0m[[0m[31merror[0m] [0m[0m	hosebirdEndpoint.language(languages);[0m
