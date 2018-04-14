@@ -8,8 +8,8 @@ create table map (
   latitude                      double,
   longitude                     double,
   percentage                    float,
-  type                          varchar(8),
-  constraint ck_map_type check ( type in ('credito','prestamo')),
+  type                          varchar(7),
+  constraint ck_map_type check ( type in ('credito','seguro')),
   constraint pk_map primary key (id)
 );
 
@@ -21,10 +21,19 @@ create table task (
   constraint pk_task primary key (id)
 );
 
+create table twit (
+  id                            integer auto_increment not null,
+  text                          varchar(255),
+  keywords                      varchar(255),
+  constraint pk_twit primary key (id)
+);
+
 
 # --- !Downs
 
 drop table if exists map;
 
 drop table if exists task;
+
+drop table if exists twit;
 

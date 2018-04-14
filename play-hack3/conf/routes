@@ -13,5 +13,7 @@ GET 	/test/geolocation			controllers.GeolocationController.index
 GET 	/heatmap/insurance			controllers.HeatMapController.insurance
 GET 	/heatmap/credit				controllers.HeatMapController.credit
 
+GET	/twits					controllers.TwitterController.index
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

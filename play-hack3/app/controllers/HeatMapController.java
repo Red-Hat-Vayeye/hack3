@@ -17,7 +17,7 @@ import com.google.gson.*;
 public class HeatMapController extends Controller {
 
 	public Result insurance() {
-		List<Map> maps = Map.findByType(Map.Type.prestamo);
+		List<Map> maps = Map.findByType(Map.Type.seguro);
 
 		String msg = "";
 		ObjectMapper mapper = new ObjectMapper();
