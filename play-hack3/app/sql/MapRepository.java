@@ -4,9 +4,11 @@ import io.ebean.*;
 import models.Map;
 import play.db.ebean.EbeanConfig;
 
-import javax.inject.Inject;
+import javax.inject.*;
+import javax.persistence.*;
+
 import java.util.Optional;
-import java.util.concurrent.CompletionStage;
+import java.util.concurrent.*;
 
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
@@ -20,7 +22,7 @@ public class MapRepository {
     private final DatabaseExecutionContext executionContext;
 
     @Inject
-    public ComputerRepository(EbeanConfig ebeanConfig, DatabaseExecutionContext executionContext) {
+    public MapRepository(EbeanConfig ebeanConfig, DatabaseExecutionContext executionContext) {
         this.ebeanServer = Ebean.getServer(ebeanConfig.defaultServer());
         this.executionContext = executionContext;
     }

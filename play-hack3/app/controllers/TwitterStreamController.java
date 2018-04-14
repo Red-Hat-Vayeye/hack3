@@ -51,7 +51,7 @@ public class TwitterStreamController extends Controller {
     	final List<String> texts = getCurrentTwitsText(10);
 
     	String msg = "";
-		if(twits.size() > 0) {
+		if(texts.size() > 0) {
 			for (String text : texts) {
 				msg += text + "\n";
 			}
@@ -84,12 +84,16 @@ public class TwitterStreamController extends Controller {
 			if(location != null
 				&& location.textValue() != null
 				&& location.textValue().trim().length() > 0) {
-				results = GeocodingApi.geocode(
-					context,
-	    			location.textValue()
-	    		).await();
-				if(results.size > 0)
-					found = true;
+				try {
+					results = GeocodingApi.geocode(
+						context,
+	    					location.textValue()
+	    				).await();
+					if(results.length > 0)
+						found = true;
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
 			}
 			i++;
 		}

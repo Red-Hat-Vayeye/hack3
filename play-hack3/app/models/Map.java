@@ -28,7 +28,7 @@ public class Map extends Model {
 
     @Enumerated(EnumType.STRING)
     @Constraints.Required
-    public Type done;
+    public Type type;
 
     public enum Type {
     	credito,
@@ -42,7 +42,9 @@ public class Map extends Model {
     public static List<Map> findByType(Type type) {
         List<Map> maps = find.all();
 
-        return maps.filter(map -> map.Type == type).collect(Collectors.toList());
+        return maps.stream()
+		.filter(map -> map.type == type)
+		.collect(Collectors.toList());
     }
 
     public static final Finder<Integer, Map> find = new Finder<>(Map.class);
