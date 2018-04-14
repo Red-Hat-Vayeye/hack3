@@ -1,6 +1,5 @@
 dinero
 billete
-lana
 nuevo
 nueva
 auto
@@ -14,7 +13,8 @@ compro
 sacar
 casa
 departamento
-depa
 seguro
 segura
 accidente
+tarjeta
+cartera

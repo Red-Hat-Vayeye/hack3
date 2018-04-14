@@ -16,15 +16,11 @@ import com.google.gson.*;
 public class HeatMapController extends Controller {
 
 	public Result insurance() {
-		Map.findByType(Map.Type.prestamo);
-
-		return ok("Ok");
+		return ok( Map.findByType(Map.Type.prestamo) );
 	}
 
 	public Result credit() {
-		Map.findByType(Map.Type.credito);
-		
-		return ok("Ok");
+		return ok( Map.findByType(Map.Type.credito) );
 	}
 
 }

@@ -3,7 +3,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /test                       controllers.HomeController.index
 GET		/test/twitter		    	controllers.TwitterStreamController.index
 GET		/test/twitter/keywords		controllers.TwitterStreamController.keywords
 GET		/test/twitter/geolocation	controllers.TwitterStreamController.geolocation
