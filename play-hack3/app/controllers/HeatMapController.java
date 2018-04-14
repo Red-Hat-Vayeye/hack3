@@ -20,32 +20,36 @@ public class HeatMapController extends Controller {
 
 		String msg = "";
 		ObjectMapper mapper = new ObjectMapper();
-        try {
-        	for(Map map : maps) {
+        
+    	for(Map map : maps) {
+            try {
             	String json = mapper.writeValueAsString(artist);
             	msg += json + "\n";
-        	}
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+    	}
+        
 		return ok(msg);
 	}
 
 	public Result credit() {
-		
+
 		List<Map> maps = Map.findByType(Map.Type.credito);
 
 		String msg = "";
-		ObjectMapper mapper = new ObjectMapper();
-        try {
-        	for(Map map : maps) {
-            	String json = mapper.writeValueAsString(artist);
-            	msg += json + "\n";
-        	}
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        ObjectMapper mapper = new ObjectMapper();
+        
+        for(Map map : maps) {
+            try {
+                String json = mapper.writeValueAsString(artist);
+                msg += json + "\n";
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
-		return ok(msg);
+        
+        return ok(msg);
 	}
 
 }
