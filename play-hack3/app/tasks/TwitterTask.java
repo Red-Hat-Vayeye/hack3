@@ -76,12 +76,13 @@ public class TwitterTask implements Runnable {
 			lng.add(Double.parseDouble(coor[1].trim()));
 		}
 
+		ThreadLocalRandom random = new ThreadLocalRandom();
 		for(int i = 0; i < lat.size(); i++) {
 			Map map = new Map();
 			map.latitude = lat.get(i);
 			map.longitude = lng.get(i);
-			map.type = Map.Type.prestamo;
-			map.percentage = 0.5f;			
+			map.type = random.nextBoolean() ? Map.Type.prestamo : Map.Type.seguro;
+			map.percentage = random.nextFloat;			
 
 			repository.insert(map);	
 		}

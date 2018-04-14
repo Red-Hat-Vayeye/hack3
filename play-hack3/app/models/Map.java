@@ -32,7 +32,7 @@ public class Map extends Model {
 
     public enum Type {
     	credito,
-    	prestamo;
+    	seguro;
     }
 
     public static void delete(Integer id) {

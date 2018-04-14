@@ -14,6 +14,6 @@ public class DatabaseExecutionContext extends CustomExecutionContext {
 
     @Inject
     public DatabaseExecutionContext(ActorSystem actorSystem) {
-        super(actorSystem, "tasks-dispatcher-db-");
+        super(actorSystem, "akka.actor.default-dispatcher");
     }
 }
