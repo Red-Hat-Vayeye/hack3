@@ -1,7 +1,13 @@
+package text;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /*
  * Gson: https://github.com/google/gson
@@ -17,31 +23,6 @@ import javax.net.ssl.HttpsURLConnection;
  * javac GetKeyPhrases.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetKeyPhrases
  */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-class Document {
-    public String id, language, text;
-
-    public Document(String id, String language, String text){
-        this.id = id;
-        this.language = language;
-        this.text = text;
-    }
-}
-
-class Documents {
-    public List<Document> documents;
-
-    public Documents() {
-        this.documents = new ArrayList<Document>();
-    }
-    public void add(String id, String language, String text) {
-        this.documents.add (new Document (id, language, text));
-    }
-}
 
 public class TextCommon {
 // Replace the accessKey string value with your valid access key.
@@ -84,20 +65,5 @@ public class TextCommon {
         JsonObject json = parser.parse(json_text).getAsJsonObject();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
-    }
-
-    public static void main (String[] args) {
-        try {
-            Documents documents = new Documents ();
-            documents.add ("1", "es", "Quisiera desarrollar un nuevo cohete a la luna. Seguro me costaría mucho dinero.");
-            documents.add ("2", "es", "Me gusta comer comida chatarra. Pero la verdad ya estoy muy gordo.");
-            documents.add ("3", "es", "Estoy interesado en comprar propiedades. ¿Alguien conoce quien me pueda prestar?");
-
-            String response = GetKeyPhrases (documents);
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
     }
 }
