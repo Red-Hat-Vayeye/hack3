@@ -4,7 +4,7 @@
 		module="play-hack-03_2.12"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20180413213551"
+		publication="20180414000437"
 	>
 		<description>
 		play-hack-03
@@ -53,5 +53,7 @@
 		<dependency org="com.twitter" name="hbc-core" rev="2.2.0" conf="compile->default(compile)"/>
 		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.8.11" conf="compile->default(compile)"/>
 		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.8.11" conf="compile->default(compile)"/>
+		<dependency org="com.google.code.gson" name="gson" rev="2.8.2" conf="compile->default(compile)"/>
+		<dependency org="com.google.maps" name="google-maps-services" rev="0.2.7" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

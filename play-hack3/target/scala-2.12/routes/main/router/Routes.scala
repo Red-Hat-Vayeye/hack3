@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Mauricio/Documents/hack3/play-hack3/conf/routes
-// @DATE:Fri Apr 13 21:32:32 CDT 2018
+// @DATE:Sat Apr 14 00:15:53 CDT 2018
 
 package router
 
@@ -17,9 +17,15 @@ class Routes(
   // @LINE:6
   HomeController_1: controllers.HomeController,
   // @LINE:7
-  TwitterStreamController_0: controllers.TwitterStreamController,
+  TwitterStreamController_2: controllers.TwitterStreamController,
+  // @LINE:8
+  TwitterKeyWordController_4: controllers.TwitterKeyWordController,
+  // @LINE:9
+  WordClassifierController_0: controllers.WordClassifierController,
   // @LINE:10
-  Assets_2: controllers.Assets,
+  GeolocationController_3: controllers.GeolocationController,
+  // @LINE:13
+  Assets_5: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -28,14 +34,20 @@ class Routes(
     // @LINE:6
     HomeController_1: controllers.HomeController,
     // @LINE:7
-    TwitterStreamController_0: controllers.TwitterStreamController,
+    TwitterStreamController_2: controllers.TwitterStreamController,
+    // @LINE:8
+    TwitterKeyWordController_4: controllers.TwitterKeyWordController,
+    // @LINE:9
+    WordClassifierController_0: controllers.WordClassifierController,
     // @LINE:10
-    Assets_2: controllers.Assets
-  ) = this(errorHandler, HomeController_1, TwitterStreamController_0, Assets_2, "/")
+    GeolocationController_3: controllers.GeolocationController,
+    // @LINE:13
+    Assets_5: controllers.Assets
+  ) = this(errorHandler, HomeController_1, TwitterStreamController_2, TwitterKeyWordController_4, WordClassifierController_0, GeolocationController_3, Assets_5, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_1, TwitterStreamController_0, Assets_2, prefix)
+    new Routes(errorHandler, HomeController_1, TwitterStreamController_2, TwitterKeyWordController_4, WordClassifierController_0, GeolocationController_3, Assets_5, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -45,6 +57,9 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """twitter""", """controllers.TwitterStreamController.index"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """twitter/keyword""", """controllers.TwitterKeyWordController.index"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """words""", """controllers.WordClassifierController.index"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """geolocation""", """controllers.GeolocationController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -76,7 +91,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("twitter")))
   )
   private[this] lazy val controllers_TwitterStreamController_index1_invoker = createInvoker(
-    TwitterStreamController_0.index,
+    TwitterStreamController_2.index,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.TwitterStreamController",
@@ -89,12 +104,66 @@ class Routes(
     )
   )
 
+  // @LINE:8
+  private[this] lazy val controllers_TwitterKeyWordController_index2_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("twitter/keyword")))
+  )
+  private[this] lazy val controllers_TwitterKeyWordController_index2_invoker = createInvoker(
+    TwitterKeyWordController_4.index,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TwitterKeyWordController",
+      "index",
+      Nil,
+      "GET",
+      this.prefix + """twitter/keyword""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:9
+  private[this] lazy val controllers_WordClassifierController_index3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("words")))
+  )
+  private[this] lazy val controllers_WordClassifierController_index3_invoker = createInvoker(
+    WordClassifierController_0.index,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.WordClassifierController",
+      "index",
+      Nil,
+      "GET",
+      this.prefix + """words""",
+      """""",
+      Seq()
+    )
+  )
+
   // @LINE:10
-  private[this] lazy val controllers_Assets_versioned2_route = Route("GET",
+  private[this] lazy val controllers_GeolocationController_index4_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("geolocation")))
+  )
+  private[this] lazy val controllers_GeolocationController_index4_invoker = createInvoker(
+    GeolocationController_3.index,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.GeolocationController",
+      "index",
+      Nil,
+      "GET",
+      this.prefix + """geolocation""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:13
+  private[this] lazy val controllers_Assets_versioned5_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned2_invoker = createInvoker(
-    Assets_2.versioned(fakeValue[String], fakeValue[Asset]),
+  private[this] lazy val controllers_Assets_versioned5_invoker = createInvoker(
+    Assets_5.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
@@ -119,13 +188,31 @@ class Routes(
     // @LINE:7
     case controllers_TwitterStreamController_index1_route(params@_) =>
       call { 
-        controllers_TwitterStreamController_index1_invoker.call(TwitterStreamController_0.index)
+        controllers_TwitterStreamController_index1_invoker.call(TwitterStreamController_2.index)
+      }
+  
+    // @LINE:8
+    case controllers_TwitterKeyWordController_index2_route(params@_) =>
+      call { 
+        controllers_TwitterKeyWordController_index2_invoker.call(TwitterKeyWordController_4.index)
+      }
+  
+    // @LINE:9
+    case controllers_WordClassifierController_index3_route(params@_) =>
+      call { 
+        controllers_WordClassifierController_index3_invoker.call(WordClassifierController_0.index)
       }
   
     // @LINE:10
-    case controllers_Assets_versioned2_route(params@_) =>
+    case controllers_GeolocationController_index4_route(params@_) =>
+      call { 
+        controllers_GeolocationController_index4_invoker.call(GeolocationController_3.index)
+      }
+  
+    // @LINE:13
+    case controllers_Assets_versioned5_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned2_invoker.call(Assets_2.versioned(path, file))
+        controllers_Assets_versioned5_invoker.call(Assets_5.versioned(path, file))
       }
   }
 }

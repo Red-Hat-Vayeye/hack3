@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Mauricio/Documents/hack3/play-hack3/conf/routes
-// @DATE:Fri Apr 13 21:32:32 CDT 2018
+// @DATE:Sat Apr 14 00:15:53 CDT 2018
 
 
 package router {
