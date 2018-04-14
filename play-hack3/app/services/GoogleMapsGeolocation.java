@@ -45,14 +45,13 @@ public class GoogleMapsGeolocation {
     				location
     			).await();
 				if(results.length > 0) {
-					String result = gson.toJson(results); 
+					
+					String result = gson.toJson(results[0]); 
 					JsonNode json = Json.parse(result);
 					JsonNode coor = json.findValue("location");
-					if (result == null || coor == null ) {
-						coordinates.add(result);
-					} else {
-						coordinates.add(coor.textValue());
-					}
+					JsonNode lat = coor.findValue("lat");
+					JsonNode lon = coor.findValue("lng");
+					coordinates.add(lat + ", " + lon);		
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

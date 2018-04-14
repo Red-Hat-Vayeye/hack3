@@ -8,9 +8,10 @@ import models.*;
 import java.io.*;
 import java.lang.*;
 import java.util.concurrent.*;
+import java.util.List;
 
+import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.*;
-
 import com.google.gson.*;
 
 public class HeatMapController extends Controller {
@@ -23,7 +24,7 @@ public class HeatMapController extends Controller {
         
     	for(Map map : maps) {
             try {
-            	String json = mapper.writeValueAsString(artist);
+            	String json = mapper.writeValueAsString(map);
             	msg += json + "\n";
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
@@ -42,7 +43,7 @@ public class HeatMapController extends Controller {
         
         for(Map map : maps) {
             try {
-                String json = mapper.writeValueAsString(artist);
+                String json = mapper.writeValueAsString(map);
                 msg += json + "\n";
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
