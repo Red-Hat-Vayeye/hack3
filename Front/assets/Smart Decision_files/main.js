@@ -84,12 +84,14 @@ function changeOpacity() {
 
 function ajaxrequest(option){
      var urlT;
-     var data = {"name":"John Doe"}
      if(option == "creditos") urlT = "credit";
      else urlT = "insurance"; 
         $.ajax({
+          xhrFields: {
+               withCredentials: true
+          }, 
           type: "GET",
-          url: 'http://10.50.90.199:8081/'+option,                            
+          url: 'http://167.99.169.199/heatmap/'+urlT,                           
           success: function(data) {
                             console.log('success');
                             var data = JSON.stringify(data);
